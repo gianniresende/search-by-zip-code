@@ -1,10 +1,11 @@
 # search-by-zip-code
 ### Find address by zip code Brazil.
 
-#### tecnologys utilized:
+#### Utilized technologies:
 - JQuery
 - Bootstrap
 - Html
+[documentation](https://viacep.com.br/)
 
 
 
