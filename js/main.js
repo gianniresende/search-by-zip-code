@@ -1,9 +1,9 @@
 function queryCep() {
-  $(".bar-progress").show();
+  $(".progress-bar").show();
   var zip_code = document.getElementById("cep").value;
   var url = "";
   if (zip_code === ""){
-    $(".bar-progress").hide();
+    $(".progress-bar").hide();
     alert('Informe um CEP para consulta');
     return;
   }else {
@@ -13,19 +13,25 @@ function queryCep() {
     url: url,
     type: "GEt",
     success: function(response) { 
-      $("#logradouro").html(response.logradouro); 
-      $("#bairro").html(response.bairro); 
-      $("#localidade").html(response.localidade); 
-      $("#uf").html(response.uf);   
-      $("#title_cep").html("CEP " + response.cep);
-      $(".cep").show();
-      $(".bar-progress").hide();
+      if (response.cep === undefined) {
+        $(".progress-bar").hide();
+        alert('CEP inválido!');
+        return;
+      } else {
+        $("#logradouro").html(response.logradouro); 
+        $("#bairro").html(response.bairro); 
+        $("#localidade").html(response.localidade); 
+        $("#uf").html(response.uf);   
+        $("#title_cep").html("CEP " + response.cep);
+        $(".cep").show();
+        $(".progress-bar").hide();
+      }
     }
   })
 }
 
 $(function() {
   $(".cep").hide();
-  $(".bar-progress").hide();
+  $(".progress-bar").hide();
 })
 
